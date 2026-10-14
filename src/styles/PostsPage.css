@@ -1,0 +1,141 @@
+
+.posts-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 24px;
+}
+
+/* Заголовок сторінки */
+.posts-page > h1 {
+    margin-bottom: 25px;
+    font-size: 36px;
+    font-weight: 800;
+    color: #1f2937;
+}
+
+/* Фільтр категорій */
+.posts-page select {
+    margin-bottom: 24px;
+    padding: 10px 12px;
+    font: inherit;
+    color: #374151;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.posts-page select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+/* Картка поста */
+.post-card {
+    margin-bottom: 24px;
+    padding: 24px;
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Ефект при наведенні */
+.post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+}
+
+/* Заголовок поста */
+.post-card h2 {
+    margin: 0 0 12px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+/* Зображення поста */
+.post-card img {
+    display: block;
+    width: 100%;
+    max-height: 320px;
+    margin: 16px 0;
+    object-fit: cover;
+    border-radius: 9px;
+    background-color: #f3f4f6;
+}
+
+/* Текст поста */
+.post-card p {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+/* Автор поста */
+.post-card .post-author {
+    margin-top: 14px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* Дата поста */
+.post-card .post-date {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* Посилання "Читати далі" */
+.post-card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #4f46e5;
+    border-radius: 7px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.post-card a:hover {
+    background-color: #4338ca;
+    transform: translateY(-1px);
+}
+
+.post-card a:active {
+    transform: translateY(0);
+}
+
+/* Адаптація для мобільних пристроїв */
+@media (max-width: 600px) {
+    .posts-page {
+        padding: 20px 14px;
+    }
+
+    .posts-page > h1 {
+        font-size: 28px;
+    }
+
+    .post-card {
+        padding: 16px;
+    }
+
+    .post-card h2 {
+        font-size: 21px;
+    }
+
+    .post-card img {
+        max-height: 240px;
+    }
+
+    .post-card p {
+        font-size: 15px;
+    }
+}

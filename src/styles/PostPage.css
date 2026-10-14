@@ -1,0 +1,38 @@
+.post-page {
+    margin: 0 auto;
+    max-width: 900px;
+    width: 100%;
+    padding: clamp(16px, 3vw, 24px);
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+ 
+.post-page h2 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 20px;
+
+}
+
+.post-page img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    max-height: 450px;
+   border-radius: 12px;
+   margin-bottom: 20px;
+}
+
+.post-page p {
+    line-height: 1.7;
+    color: #343b44;
+    margin-bottom: 16px;
+}
+
+.post-page .post-author {
+    margin-top: 20px;
+    color: #6b7280;
+}
