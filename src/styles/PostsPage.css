@@ -1,4 +1,3 @@
-
 .posts-page {
     max-width: 1000px;
     margin: 0 auto;
@@ -6,11 +5,11 @@
 }
 
 /* Заголовок сторінки */
-.posts-page > h1 {
+.posts-page>h1 {
     margin-bottom: 25px;
     font-size: 36px;
     font-weight: 800;
-    color: #1f2937;
+    color: var(--text-color);
 }
 
 /* Фільтр категорій */
@@ -18,9 +17,9 @@
     margin-bottom: 24px;
     padding: 10px 12px;
     font: inherit;
-    color: #374151;
-    background-color: #ffffff;
-    border: 1px solid #d1d5db;
+    color: var(--text-color);
+    background-color: var(--card-color);
+    border: 1px solid var(--border-color);
     border-radius: 7px;
     cursor: pointer;
     outline: none;
@@ -37,8 +36,8 @@
     margin-bottom: 24px;
     padding: 24px;
     overflow: hidden;
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
+    background-color: var(--card-color);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -50,12 +49,39 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
 }
 
+/* Категорія поста */
+.post-card .post-category {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: #eef2ff;
+    color: #4338ca;
+    font-size: 13px;
+    font-weight: 600;
+}
+
 /* Заголовок поста */
 .post-card h2 {
-    margin: 0 0 12px;
-    font-size: 24px;
-    font-weight: 700;
-    color: #1f2937;
+    margin: 12px 0;
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--text-color);
+}
+
+/* Автор і дата */
+.post-card .post-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 16px;
+}
+
+.post-card .post-author,
+.post-card .post-date {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted-color);
 }
 
 /* Зображення поста */
@@ -74,43 +100,40 @@
     margin: 10px 0;
     font-size: 16px;
     line-height: 1.6;
-    color: #4b5563;
+    color: var(--text-color);
 }
 
-/* Автор поста */
-.post-card .post-author {
-    margin-top: 14px;
-    font-size: 14px;
-    color: #6b7280;
-}
-
-/* Дата поста */
-.post-card .post-date {
-    font-size: 14px;
-    color: #6b7280;
-}
-
-/* Посилання "Читати далі" */
-.post-card a {
-    display: inline-block;
+/* Кнопка переходу до поста */
+.post-card .read-post-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     margin-top: 10px;
-    padding: 10px 16px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #ffffff;
-    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 8px;
     background-color: #4f46e5;
-    border-radius: 7px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.post-card a:hover {
+.post-card .read-post-button:hover {
     background-color: #4338ca;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
-.post-card a:active {
+.post-card .read-post-button:active {
     transform: translateY(0);
+}
+
+.post-card .read-post-button span {
+    transition: transform 0.2s ease;
+}
+
+.post-card .read-post-button:hover span {
+    transform: translateX(3px);
 }
 
 /* Адаптація для мобільних пристроїв */
@@ -119,7 +142,7 @@
         padding: 20px 14px;
     }
 
-    .posts-page > h1 {
+    .posts-page>h1 {
         font-size: 28px;
     }
 

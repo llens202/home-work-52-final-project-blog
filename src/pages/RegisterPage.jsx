@@ -1,5 +1,6 @@
 import '../styles/RegisterPage.css';
 import { useState } from 'react';
+import api from '../api/api';
 
 
 
@@ -7,28 +8,44 @@ function RegisterPage() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
 
         const formData = new FormData(event.target);
 
-        setSuccess('');
-
+        const name = formData.get('name');
+        const email = formData.get('email');
         const password = formData.get('password');
         const confirmPassword = formData.get('confirmPassword');
 
+        setError('');
+        setSuccess('');
+
         if (password !== confirmPassword) {
             setError('Паролі не збігаються');
-
             return;
-        } if (password.length < 8) {
+        }
+
+        if (password.length < 8) {
             setError('Пароль повинен містити щонайменше 8 символів');
             return;
         }
 
-        setError('');
-        event.target.reset();
-        setSuccess('Форму успішно заповнено!');
+        try {
+            const response = await api.post('/auth/register', {
+                name,
+                email,
+                password,
+            });
+
+            setSuccess(response.data.message);
+            event.target.reset();
+        } catch (error) {
+            setError(
+                error.response?.data?.message ||
+                'Не вдалося зареєструватися. Перевір підключення до сервера.'
+            );
+        }
     }
 
     return (

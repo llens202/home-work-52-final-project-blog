@@ -4,7 +4,7 @@
       "id": 3,
       "category": "Програмування",
       "title": "Основи React: Як правильно використовувати хуки",
-      "description": "Розбираємо популярні хуки (useState, useEffect) на практичних прикладах та вчимося уникати поширених помилок під час рендеру.",
+      "description": "Розбираємо популярні хуки (useState, useEffect) на практичних прикладах та вчимося уникати поширених помилок під час рендеру. ",
       "imageUrl": "https://picsum.photos/seed/react/800/400",
       "author": "Іван Іваненко",
       "date": "05.10.2026"
@@ -62,6 +62,29 @@
       "category": "Програмування",
       "imageUrl": "/uploads/1791923198652-563239233-233-800x400.jpg",
       "date": "10.10.2026"
+    },
+    {
+      "id": 1792134949568,
+      "title": "Тестовий пост 1",
+      "description": "Тест",
+      "author": "Ярослав",
+      "category": "Програмування",
+      "imageUrl": "/uploads/1792134949555-39763369-233-800x400.jpg",
+      "date": "16.10.2026"
+    }
+  ],
+  "users": [
+    {
+      "id": 1792339294682,
+      "name": "Yaroslav Test",
+      "email": "yaroslav.test@example.com",
+      "password": "$2b$10$NTO/uxFFQP9pkyDJIxvOHeYJ/3WuDVhLesIBemkJxDFUMDqFuG2ri"
+    },
+    {
+      "id": 1792339506497,
+      "name": "Ярослав",
+      "email": "lens202.l@gmail.com",
+      "password": "$2b$10$90ga53OUuIjhvwmJXN1IBu1im5yThKl8fBlSDzdiWAC03.fkz1b.u"
     }
   ]
 }

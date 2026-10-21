@@ -1,54 +1,72 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { addPost } from '../redux/postsSlice';
+import { AuthContext } from '../context/AuthContext';
 import api from '../api/api';
 import '../styles/CreatePostForm.css';
 
 function CreatePostForm() {
+    const { user } = useContext(AuthContext);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [author, setAuthor] = useState('');
     const [category, setCategory] = useState('Програмування');
     const [image, setImage] = useState(null);
+    const [imageUrlInput, setImageUrlInput] = useState('');
 
     const imageInputRef = useRef(null);
 
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            if (!title || !description || !author) {
+            if (!title || !description) {
                 alert('Заповни всі поля');
 
                 return;
             }
 
+
             let imageUrl = null;
 
-            if (image) {
+            if (imageUrlInput.trim()) {
+                imageUrl = imageUrlInput.trim();
+            } else if (image) {
                 const formData = new FormData();
                 formData.append('images', image);
 
-                const response = await api.post('/upload-images', formData);
+                const token = localStorage.getItem('token');
 
+                const response = await api.post('/upload-images', formData, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
                 imageUrl = response.data.imagePaths[0];
             }
+
 
             const newPost = {
                 id: Date.now(),
                 title: title,
                 description: description,
-                author: author,
                 category: category,
                 imageUrl: imageUrl,
-                date: '10.10.2026'
+                date: new Date().toLocaleDateString('uk-UA')
             }
 
-            const response = await api.post('/posts', newPost);
+            const token = localStorage.getItem('token');
+
+            const response = await api.post('/posts', newPost, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
             const savedPost = response.data;
 
             dispatch(addPost(savedPost));
@@ -57,9 +75,9 @@ function CreatePostForm() {
 
             setTitle('');
             setDescription('');
-            setAuthor('');
             setCategory('Програмування');
             setImage(null);
+            setImageUrlInput('');
             imageInputRef.current.value = '';
 
             console.log(newPost);
@@ -67,6 +85,16 @@ function CreatePostForm() {
             console.error('Помилка створення поста:', error);
             alert('Не вдалося створити пост. Спробуй ще раз.');
         }
+    }
+
+    if (!user) {
+        return (
+            <div className="auth-required">
+                <h2>Потрібна авторизація</h2>
+                <p>Щоб створити пост, увійдіть у свій акаунт або зареєструйтеся.</p>
+                <Link to="/register">Зареєструватися</Link>
+            </div>
+        );
     }
 
 
@@ -83,12 +111,6 @@ function CreatePostForm() {
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}></textarea>
 
-            <label htmlFor="author">Автор поста</label>
-            <input id="author"
-                type="text"
-                value={author}
-                onChange={(event) => setAuthor(event.target.value)} />
-
             <label htmlFor='image'>Картинка поста</label>
             <input
                 id="image"
@@ -96,6 +118,15 @@ function CreatePostForm() {
                 accept="image/*"
                 ref={imageInputRef}
                 onChange={(event) => setImage(event.target.files[0])}
+            />
+
+            <label htmlFor="imageUrlInput">Або встав URL картинки:</label>
+            <input
+                id="imageUrlInput"
+                type="url"
+                value={imageUrlInput}
+                onChange={(event) => setImageUrlInput(event.target.value)}
+                placeholder="https://example.com/image.jpg"
             />
 
             {image && (
@@ -108,13 +139,19 @@ function CreatePostForm() {
             )}
 
             <label htmlFor="category">Категорія</label>
+
             <select
                 id="category"
                 value={category}
-                onChange={(event) => setCategory(event.target.value)}>
+                onChange={(event) => setCategory(event.target.value)}
+            >
                 <option value="Програмування">Програмування</option>
                 <option value="Вебдизайн">Вебдизайн</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="React">React</option>
+                <option value="HTML/CSS">HTML/CSS</option>
             </select>
+
             <button type="submit">Створити пост</button>
 
 

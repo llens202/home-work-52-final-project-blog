@@ -1,4 +1,26 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1f2937;
+  --card-color: #f9fafb;
+  --border-color: #e5e7eb;
+  --muted-color: #6b7280;
+  --header-bg: #111827;
+  --header-text: #f9fafb;
+  --footer-bg: #111827;
+  --footer-text: #f9fafb;
+}
 
+[data-theme="dark"] {
+  --bg-color: #111827;
+  --text-color: #f9fafb;
+  --card-color: #1f2937;
+  --border-color: #374151;
+  --muted-color: #9ca3af;
+  --header-bg: #111827;
+  --header-text: #f9fafb;
+  --footer-bg: #111827;
+  --footer-text: #f9fafb;
+}
 
 
 * {
@@ -6,9 +28,17 @@
 }
 
 
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 main {
@@ -16,7 +46,24 @@ main {
 }
 
 .container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
 }

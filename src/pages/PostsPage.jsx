@@ -12,46 +12,55 @@ function PostsPage() {
 
   const posts = useSelector(state => state.posts.posts);
 
+  const loading = useSelector(state => state.posts.loading);
+  const error = useSelector(state => state.posts.error);
+
   const [searchParams] = useSearchParams();
 
   const selectedCategory = searchParams.get('category')
 
-  const [category, setCategory] = useState(selectedCategory ||'Усі');
+  const [category, setCategory] = useState(selectedCategory || 'Усі');
 
   useEffect(() => {
     setCategory(selectedCategory || 'Усі')
-  },[selectedCategory])
+  }, [selectedCategory])
 
-    const filteredPosts = posts.filter(post => {
-        return category === 'Усі' || post.category === category;
-    });
+  const filteredPosts = posts.filter(post => {
+    return category === 'Усі' || post.category === category;
+  });
 
 
-     return (
-      <div className="posts-page">
+  return (
+    <div className="posts-page">
 
+
+
+      <h1>Сторінка постів DevBlog</h1>
+
+
+      <select
+        value={category}
+        onChange={event => {
+          setCategory(event.target.value);
+        }}>
+        <option>Усі</option>
+        <option>Програмування</option>
+        <option>Вебдизайн</option>
+      </select>
       
+      {loading ? (
+        <p>Завантаження постів...</p>
+      ) : error ? (
+        <p>Помилка завантаження постів: {error}</p>
+      ) : (
+        filteredPosts.map(post => {
+          return <PostCard key={post.id} post={post} />;
+        })
+      )}
 
-          <h1>Сторінка постів DevBlog</h1>
+    </div>
 
-
-          <select 
-          value={category}
-          onChange={event => {
-            setCategory(event.target.value);
-          }}>
-            <option>Усі</option>
-            <option>Програмування</option>
-            <option>Вебдизайн</option>
-          </select>
-
-      {filteredPosts.map(post => {
-        return <PostCard key={post.id} post={post} />;
-      })}
-
-      </div>
-       
-     )
+  )
 }
 
 export default PostsPage;

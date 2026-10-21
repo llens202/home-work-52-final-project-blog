@@ -9,6 +9,8 @@ import CategoriesPage from './pages/CategoriesPage'
 import RegisterPage from './pages/RegisterPage'
 import PostPage from './pages/PostPage'
 import CreatePostPage from './pages/CreatePostPage'
+import EditPostPage from './pages/EditPostPage';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -19,19 +21,22 @@ useEffect(() => {
 }, [dispatch]);
 
   return (
-    <>
+    <div className="app">
     <Header />
-  <main>
+  <main className="app-main">
     <Routes>
      <Route path="/" element={<HomePage />} />
       <Route path="/posts" element={<PostsPage />} />
       <Route path="/categories" element={<CategoriesPage />} />
       <Route path="/posts/create" element={<CreatePostPage />} />
+      <Route path="/posts/:id/edit" element={<EditPostPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/posts/:id" element={<PostPage />} />
     </Routes>
   </main>
-    </>
+
+  <Footer />
+    </div>
   
   )
 }

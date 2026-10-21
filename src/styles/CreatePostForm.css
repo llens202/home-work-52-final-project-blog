@@ -26,6 +26,7 @@
 }
 
 .create-post-form input[type="text"],
+.create-post-form input[type="url"],
 .create-post-form textarea,
 .create-post-form select {
     width: 100%;
@@ -40,6 +41,7 @@
 }
 
 .create-post-form input[type="text"]:focus,
+.create-post-form input[type="url"]:focus,
 .create-post-form textarea:focus,
 .create-post-form select:focus {
     border-color: #4f46e5;
@@ -105,4 +107,44 @@
     .create-post-form h1 {
         font-size: 24px;
     }
+}
+
+.auth-required {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 40px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.auth-required h2 {
+    margin-bottom: 16px;
+    color: #111827;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.auth-required p {
+    margin-bottom: 24px;
+    color: #6b7280;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.auth-required a {
+    display: inline-block;
+    padding: 12px 24px;
+    color: #ffffff;
+    background-color: #4f46e5;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.auth-required a:hover {
+    background-color: #4338ca;
 }

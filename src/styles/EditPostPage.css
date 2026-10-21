@@ -1,0 +1,81 @@
+.edit-post-page {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.edit-post-page h1 {
+    margin-bottom: 24px;
+    font-size: 28px;
+    text-align: center;
+}
+
+.edit-post-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.edit-post-page label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.edit-post-page input,
+.edit-post-page textarea,
+.edit-post-page select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 400;
+}
+
+.edit-post-page textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.edit-post-page input:focus,
+.edit-post-page textarea:focus,
+.edit-post-page select:focus {
+    outline: none;
+    border-color: #4f46e5;
+}
+
+.edit-post-page img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 10px;
+    border-radius: 8px;
+}
+
+.edit-post-page button {
+    padding: 14px;
+    background-color: #4f46e5;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.edit-post-page button:hover {
+    background-color: #4338ca;
+}
+
+.image-error {
+    margin: 0;
+    color: #dc2626;
+    font-size: 14px;
+}
