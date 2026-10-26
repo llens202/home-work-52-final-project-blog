@@ -21,6 +21,7 @@ function Header() {
   };
 
   const { user, setUser } = useContext(AuthContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   async function handleLogin(event) {
     event.preventDefault();
@@ -58,88 +59,105 @@ function Header() {
   }
 
   return (
-   
-<header className="header">
-  <h1 className="header-logo">
-    DevBlog<span>.</span>
-  </h1>
 
-  <nav>
-    <Link className="nav-link" to="/">
-      Home
-    </Link>
-
-    <Link className="nav-link" to="/posts">
-      Posts
-    </Link>
-
-    <Link className="nav-link" to="/posts/create">
-      Create Post
-    </Link>
-
-    <Link className="nav-link" to="/categories">
-      Categories
-    </Link>
-  </nav>
-
-  <div className="header-auth">
-    <div className="header-actions">
+    <header className="header">
       <button
         type="button"
-        onClick={toggleTheme}
-        className="theme-toggle"
-        aria-label={
-          theme === 'light'
-            ? 'Увімкнути темну тему'
-            : 'Увімкнути світлу тему'
-        }
-        title={theme === 'light' ? 'Темна тема' : 'Світла тема'}
+        className="menu-toggle"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label={isMenuOpen ? 'Закрити меню' : 'Відкрити меню'}
+        aria-expanded={isMenuOpen}
       >
-        {theme === 'light' ? '🌙' : '☀️'}
+        {isMenuOpen ? '✕' : '☰'}
       </button>
-    </div>
+      <h1 className="header-logo">
+        DevBlog<span>.</span>
+      </h1>
 
-    <div className="header-auth-content">
-      {user ? (
-        <div className="header-user">
-          <span>Вітаємо, {user.name}!</span>
-          <button type="button" onClick={handleLogout}>
-            Вийти
-          </button>
+      <div className={`header-menu ${isMenuOpen ? 'is-open' : ''}`}>
+
+        <nav>
+          <Link className="nav-link" to="/">
+            Home
+          </Link>
+
+          <Link className="nav-link" to="/posts">
+            Posts
+          </Link>
+
+          <Link className="nav-link" to="/posts/create">
+            Create Post
+          </Link>
+
+          <Link className="nav-link" to="/categories">
+            Categories
+          </Link>
+        </nav>
+
+        <div className="header-auth">
+          <div className="header-actions">
+
+             <span className="theme-label">Тема оформлення</span>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="theme-toggle"
+              aria-label={
+                theme === 'light'
+                  ? 'Увімкнути темну тему'
+                  : 'Увімкнути світлу тему'
+              }
+              title={theme === 'light' ? 'Темна тема' : 'Світла тема'}
+            >
+              {theme === 'light' ? '🌙' : '☀️'}
+            </button>
+            
+
+          </div>
+
+          <div className="header-auth-content">
+            {user ? (
+              <div className="header-user">
+                <span>Вітаємо, {user.name}!</span>
+                <button type="button" onClick={handleLogout}>
+                  Вийти
+                </button>
+              </div>
+            ) : (
+              <>
+                <h3 className="mobile-login-title">Вхід в акаунт</h3>
+                <form className="header-login" onSubmit={handleLogin}>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    aria-label="Email"
+                    required
+                  />
+
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Пароль"
+                    aria-label="Пароль"
+                    required
+                  />
+
+                  <button type="submit">Увійти</button>
+                </form>
+
+                <p className="header-register">
+                  Не маєте акаунта?{' '}
+                  <Link to="/register">Зареєструватися</Link>
+                </p>
+
+                {error && <p className="register-error">{error}</p>}
+              </>
+            )}
+          </div>
         </div>
-      ) : (
-        <>
-          <form className="header-login" onSubmit={handleLogin}>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              aria-label="Email"
-              required
-            />
-
-            <input
-              type="password"
-              name="password"
-              placeholder="Пароль"
-              aria-label="Пароль"
-              required
-            />
-
-            <button type="submit">Увійти</button>
-          </form>
-
-          <p className="header-register">
-            Не маєте акаунта?{' '}
-            <Link to="/register">Зареєструватися</Link>
-          </p>
-
-          {error && <p className="register-error">{error}</p>}
-        </>
-      )}
-    </div>
-  </div>
-</header>
+      </div>
+    </header>
 
   );
 }

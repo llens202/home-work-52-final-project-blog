@@ -1,5 +1,9 @@
 .container.categories-page {
     padding: 24px;
+
+    @media(max-width: 580px) {
+        padding: 0;
+    }
 }
 
 .categories-page h1 {
