@@ -46,6 +46,9 @@ function PostsPage() {
         <option>Усі</option>
         <option>Програмування</option>
         <option>Вебдизайн</option>
+        <option>JavaScript</option>
+        <option>React</option>
+        <option>HTML/CSS</option>
       </select>
       
       {loading ? (

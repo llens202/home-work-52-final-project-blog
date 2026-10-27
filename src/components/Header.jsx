@@ -2,9 +2,12 @@ import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import api from '../api/api';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import '../styles/Header.css';
 
 function Header() {
+
+  const { t, i18n } = useTranslation();
 
   const [error, setError] = useState('');
   const [theme, setTheme] = useState(
@@ -76,28 +79,53 @@ function Header() {
 
       <div className={`header-menu ${isMenuOpen ? 'is-open' : ''}`}>
 
+
         <nav>
           <Link className="nav-link" to="/">
-            Home
+            {t('nav.home')}
           </Link>
 
           <Link className="nav-link" to="/posts">
-            Posts
+            {t('nav.posts')}
           </Link>
 
           <Link className="nav-link" to="/posts/create">
-            Create Post
+            {t('nav.createPost')}
           </Link>
 
           <Link className="nav-link" to="/categories">
-            Categories
+            {t('nav.categories')}
           </Link>
         </nav>
 
         <div className="header-auth">
           <div className="header-actions">
 
-             <span className="theme-label">Тема оформлення</span>
+            <div className="language-switcher">
+          <button
+            type="button"
+            onClick={() => {
+              i18n.changeLanguage('uk');
+              localStorage.setItem('language', 'uk');
+            }}
+            disabled={i18n.language === 'uk'}
+          >
+            UA
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              i18n.changeLanguage('en');
+              localStorage.setItem('language', 'en');
+            }}
+            disabled={i18n.language === 'en'}
+          >
+            EN
+          </button>
+        </div>
+
+            
             <button
               type="button"
               onClick={toggleTheme}
@@ -111,7 +139,7 @@ function Header() {
             >
               {theme === 'light' ? '🌙' : '☀️'}
             </button>
-            
+
 
           </div>
 

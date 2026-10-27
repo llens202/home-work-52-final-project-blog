@@ -1,0 +1,8 @@
+{
+  "nav": {
+    "home": "Home",
+    "posts": "Posts",
+    "createPost": "Create Post",
+    "categories": "Categories"
+  }
+}
