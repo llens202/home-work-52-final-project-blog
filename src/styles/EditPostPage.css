@@ -12,6 +12,7 @@
     margin-bottom: 24px;
     font-size: 28px;
     text-align: center;
+    color: #111827;
 }
 
 .edit-post-page form {
@@ -23,6 +24,7 @@
 .edit-post-page label {
     display: flex;
     flex-direction: column;
+    color: #1f2937;
     gap: 8px;
     font-weight: 600;
 }

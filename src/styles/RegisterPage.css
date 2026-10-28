@@ -24,7 +24,7 @@
 
 .register-page label {
     font-weight: 600;
-    color: #374151;
+    color: var(--text-color);
 }
 
 .register-page button {
@@ -50,7 +50,7 @@
     text-align: center;
     margin-bottom: 24px;
     font-size: 32px;
-    color: #1f2937;
+    color: var(--text-color);
 }
 
 

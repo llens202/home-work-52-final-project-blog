@@ -3,8 +3,8 @@
     max-width: 900px;
     width: 100%;
     padding: clamp(16px, 3vw, 24px);
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
+    background-color: var(--card-color);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
 }
@@ -14,7 +14,7 @@
     font-size: clamp(28px, 4vw, 36px);
     font-weight: 800;
     line-height: 1.2;
-    color: #1f2937;
+    color: var(--text-color);
     margin: 16px 0;
 
     @media(max-width: 425px) {
@@ -61,7 +61,7 @@
 
 .post-page p {
     line-height: 1.7;
-    color: #343b44;
+    color: var(--text-color);
     margin-bottom: 16px;
 
     @media(max-width: 425px) {
@@ -136,6 +136,6 @@
     margin-top: 20px;
 
     @media(max-width: 425px) {
-    margin-top: 10px;
+        margin-top: 10px;
     }
 }
