@@ -86,13 +86,15 @@
     gap: 24px;
 }
 
-.popular-post-card {
-    border: 1px solid #e5e7eb;
+
+    .popular-post-card {
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 16px;
-    background-color: #ffffff;
+    background-color: var(--card-color);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 
 
 .popular-post-card:hover {
@@ -116,7 +118,7 @@
     font-size: 20px;
     line-height: 1.4;
     margin: 0 0 12px;
-    color: #1f2937;
+    color: var(--text-color);
 }
 
 .popular-post-card p {
@@ -141,6 +143,10 @@
 @media (max-width: 900px) {
     .popular-posts-list {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .popular-post-card:last-child {
+        grid-column: 1 / -1;
     }
 }
 
@@ -215,7 +221,7 @@
 }
 
 .home-categories-all:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 
