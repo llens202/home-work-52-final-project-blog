@@ -1,16 +1,191 @@
-# React + Vite
+# DevBlog — блог про програмування та веброзробку
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+DevBlog — це вебзастосунок для публікації, перегляду та керування дописами на теми програмування, вебдизайну та сучасних вебтехнологій.
 
-Currently, two official plugins are available:
+Проєкт створений у межах навчання Full-Stack JavaScript і призначений для практичного застосування знань React, JavaScript, управління станом, маршрутизації та розробки серверної частини.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Демо проєкту
 
-## React Compiler
+**Переглянути сайт:** [DevBlog — відкрити вебзастосунок](https://home-work-52-final-project-blog.vercel.app/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Основні можливості
 
-## Expanding the ESLint configuration
+### 🏠 Головна сторінка
+- Знайомство з блогом DevBlog.
+- Відображення популярних дописів.
+- Картки дописів із заголовками, описами та зображеннями.
+- Адаптивне розташування елементів інтерфейсу.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 📝 Робота з дописами
+- Перегляд списку всіх дописів.
+- Перегляд окремого допису з повним текстом і зображенням.
+- Створення нових публікацій.
+- Редагування власних дописів.
+- Видалення власних публікацій.
+- Відображення автора, категорії та іншої інформації про допис.
+
+### 🔎 Фільтрація та пагінація
+- Фільтрація дописів за категоріями.
+- Підтримка категорій: програмування, вебдизайн, JavaScript, React та HTML/CSS.
+- Збереження вибраної категорії в URL.
+- Розподіл дописів на сторінки для зручнішого перегляду.
+- Автоматичне повернення до першої сторінки після зміни категорії.
+- Прокручування до заголовка списку під час перемикання сторінок.
+
+### 🔐 Авторизація користувачів
+- Вхід до облікового запису.
+- Перевірка авторизації користувача.
+- Отримання інформації про поточного користувача.
+- Збереження даних авторизації в `localStorage`.
+- Вихід з облікового запису.
+- Контекст авторизації для передавання даних користувача між компонентами.
+- Обмеження керування дописами відповідно до поточного користувача.
+
+### 🎨 Інтерфейс і дизайн
+- Світла та темна теми оформлення.
+- Перемикання теми за допомогою кнопки в інтерфейсі.
+- Темний заголовок і футер у світлій темі.
+- Адаптивний дизайн для комп’ютерів, планшетів і смартфонів.
+- Картки дописів із сучасним оформленням.
+- Навігація між сторінками за допомогою React Router.
+
+## 🛠️ Використані технології
+
+### Frontend
+- [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML) — структура сторінок.
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS) — оформлення та адаптивний дизайн.
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) — логіка застосунку.
+- [React](https://react.dev/) — створення компонентного інтерфейсу.
+- [Vite](https://vite.dev/) — інструмент розробки та збирання frontend-застосунку.
+- [React Router](https://reactrouter.com/) — маршрутизація між сторінками.
+- [Redux Toolkit](https://redux-toolkit.js.org/) — управління станом дописів.
+- [Axios](https://axios-http.com/) — виконання HTTP-запитів до API.
+
+### Backend
+- [Node.js](https://nodejs.org/) — серверне середовище JavaScript.
+- [Express](https://expressjs.com/) — створення HTTP-сервера та API.
+- [Multer](https://github.com/expressjs/multer) — обробка завантаження зображень.
+- REST API — обмін даними між клієнтською та серверною частинами.
+
+### Інструменти розробки
+- [ESLint](https://eslint.org/) — перевірка коду та пошук потенційних помилок.
+- npm — встановлення залежностей і запуск команд проєкту.
+- Git — контроль версій.
+
+## 📁 Структура проєкту
+
+```text
+
+blog-project/
+├── public/                     # Статичні файли
+├── src/
+│   ├── api/
+│   │   └── api.js              # Налаштування запитів до API
+│   ├── components/
+│   │   ├── CreatePostForm.jsx  # Форма створення допису
+│   │   ├── Footer.jsx          # Нижня частина сторінки
+│   │   ├── Header.jsx          # Шапка та навігація
+│   │   └── PostCard.jsx        # Картка допису
+│   ├── context/
+│   │   ├── AuthContext.js      # Створення контексту авторизації
+│   │   └── AuthContext.jsx     # Провайдер авторизації
+│   ├── i18n/
+│   │   ├── locales/
+│   │   │   ├── en.json         # Англійські переклади
+│   │   │   └── uk.json         # Українські переклади
+│   │   └── index.js            # Налаштування інтернаціоналізації
+│   ├── pages/
+│   │   ├── CategoriesPage.jsx  # Сторінка категорій
+│   │   ├── CreatePostPage.jsx  # Сторінка створення допису
+│   │   ├── EditPostPage.jsx    # Сторінка редагування допису
+│   │   ├── HomePage.jsx        # Головна сторінка
+│   │   ├── PostPage.jsx        # Сторінка окремого допису
+│   │   ├── PostsPage.jsx       # Список дописів і пагінація
+│   │   └── RegisterPage.jsx    # Сторінка реєстрації
+│   ├── redux/
+│   │   ├── postsSlice.js       # Redux-логіка дописів
+│   │   └── store.js            # Налаштування Redux Store
+│   ├── styles/
+│   │   ├── CategoriesPage.css
+│   │   ├── CreatePostForm.css
+│   │   ├── EditPostPage.css
+│   │   ├── Footer.css
+│   │   ├── Header.css
+│   │   ├── HomePage.css
+│   │   ├── PostPage.css
+│   │   ├── PostsPage.css
+│   │   └── RegisterPage.css
+│   ├── App.css                 # Стилі застосунку
+│   ├── App.jsx                 # Основний компонент і маршрути
+│   ├── index.css               # Глобальні стилі
+│   └── main.jsx                # Точка входу React
+├── .gitignore                  # Файли, які Git ігнорує
+├── db.json                     # Файл даних
+├── eslint.config.js            # Конфігурація ESLint
+├── index.html                  # HTML-шаблон Vite
+├── package-lock.json           # Зафіксовані версії залежностей
+└── README.md                   # Документація проєкту
+```
+
+*Структура наведена як орієнтовна та може відрізнятися від фактичної залежно від останніх змін у проєкті.*
+
+## 🚀 Встановлення та запуск
+
+### 1. Клонування репозиторію
+
+```bash
+git clone https://github.com/llens202/home-work-52-final-project-blog
+cd blog-project
+```
+
+
+
+### 2. Встановлення залежностей
+
+```bash
+npm install
+```
+
+### 3. Запуск frontend
+
+```bash
+npm run dev
+```
+
+Vite запустить локальний сервер розробки. Адреса зазвичай має вигляд:
+
+`http://localhost:5173`
+
+### 4. Запуск backend
+
+У новому терміналі, з кореневої папки проєкту, виконай:
+
+```bash
+node server.js
+```
+
+Сервер працює на порту `3009` і повідомляє про запуск за адресою:
+
+`http://localhost:3009`
+
+Для повноцінної роботи застосунку frontend і backend мають бути запущені одночасно.
+
+## 🧹 Перевірка якості коду
+
+Для запуску ESLint виконай:
+
+```bash
+npm run lint
+```
+
+Команда перевіряє код відповідно до налаштованих правил. Проєкт було перевірено, і ESLint не виявив помилок після виправлення конфігурації та структури коду.
+
+## 🎯 Мета проєкту
+
+Мета DevBlog — закріпити практичні навички frontend- і backend-розробки, навчитися створювати React-компоненти, працювати зі станом застосунку, маршрутизацією, API, авторизацією та адаптивним дизайном.
+
+Проєкт також є практичним прикладом використання JavaScript для створення повноцінного вебзастосунку.
+
+## 📌 Статус проєкту
+
+Навчальний проєкт у процесі розробки. Функціональність, інтерфейс і структура можуть вдосконалюватися в майбутньому.
