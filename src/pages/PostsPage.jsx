@@ -16,18 +16,14 @@ function PostsPage() {
   const loading = useSelector(state => state.posts.loading);
   const error = useSelector(state => state.posts.error);
 
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const selectedCategory = searchParams.get('category')
+  const category = searchParams.get('category') || 'Усі';
 
-  const [category, setCategory] = useState(selectedCategory || 'Усі');
   const [currentPage, setCurrentPage] = useState(1);
   const postsHeadingRef = useRef(null);
 
-  useEffect(() => {
-    setCategory(selectedCategory || 'Усі');
-    setCurrentPage(1);
-  }, [selectedCategory]);
+
 
   useEffect(() => {
     postsHeadingRef.current?.scrollIntoView({
@@ -57,7 +53,16 @@ function PostsPage() {
       <select
         value={category}
         onChange={event => {
-          setCategory(event.target.value);
+          const newCategory = event.target.value;
+          const nextParams = new URLSearchParams(searchParams);
+
+          if (newCategory === 'Усі') {
+            nextParams.delete('category');
+          } else {
+            nextParams.set('category', newCategory);
+          }
+
+          setSearchParams(nextParams);
           setCurrentPage(1);
         }}>
         <option>Усі</option>

@@ -355,6 +355,7 @@ server.post('/posts', requireAuth, (request, response) => {
 server.use(router);
 
 // Обробка помилок
+// eslint-disable-next-line no-unused-vars
 server.use((error, _request, response, _next) => {
   if (error instanceof multer.MulterError) {
     if (error.code === 'LIMIT_FILE_SIZE') {
