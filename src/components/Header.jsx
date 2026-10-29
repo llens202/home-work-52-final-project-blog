@@ -73,9 +73,9 @@ function Header() {
       >
         {isMenuOpen ? '✕' : '☰'}
       </button>
-      <h1 className="header-logo">
+      <Link to="/" className="header-logo">
         DevBlog<span>.</span>
-      </h1>
+      </Link>
 
       <div className={`header-menu ${isMenuOpen ? 'is-open' : ''}`}>
 
